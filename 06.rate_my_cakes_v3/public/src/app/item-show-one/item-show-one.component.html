@@ -1,0 +1,26 @@
+<div class="container py-1 z-depth-1 " *ngIf='itemToShow != null'>
+    <div class="row">
+        <div class="col-md-4 border-right border-light">
+            <img width="200" [src]="itemToShow.imageURL" alt="cake">
+        </div>
+        <div class="col ">
+            <h3 class="text-info">{{ itemToShow.cakeName }}</h3>
+            <p>Made with <i class="fas fa-heart text-danger"></i> by <span class="text-info">{{ itemToShow.bakerName }}</span></p>
+            <p>
+                <button type="button" class="btn btn-sm btn-light" (click) = 'getAverageRating(itemToShow._id)'> Average Rating</button>
+                <strong>&nbsp;{{ itemToShow.averageRating }}</strong>
+            </p>
+            <table class="table">
+                <tbody *ngFor='let review of itemToShow.reviews'>
+                    <tr>
+                        <td scope="row"><i   class="fas fa-star amber-text"></i>: <strong>{{review.rating}}</strong> </td>
+                        <td>.... {{review.comment}}</td>
+                        <td><a class="d-inline text-secondary"  (click) = 'onReviewDelete(review)'><i class="far fa-trash-alt"></i></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+

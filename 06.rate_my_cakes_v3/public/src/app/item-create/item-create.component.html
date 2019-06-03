@@ -1,0 +1,22 @@
+<div class="container  z-depth-1">
+  <h3 class="text-info text-center pt-2">Submit your cake</h3>
+
+  <form (submit) = "submitBtnClicked()" >
+    <!-- <p>{{newItem | json}}</p> -->
+    <div class = "input-group md-form py-0">
+      <input placeholder = "Cake name" type = "text" name="newItem.cakeName" [(ngModel)] = "newItem.cakeName" class="form-control" />
+    </div>
+
+    <div class="input-group md-form py-2">
+        <input placeholder = "Baker's name" type = "text" name="newItem.bakerName" [(ngModel)] = "newItem.bakerName" class="form-control"  />
+    </div>
+
+    <div class="input-group md-form py-2">
+        <input placeholder = "Image URL" type = "text" name="newItem.imageURL" [(ngModel)] = "newItem.imageURL" class="form-control"  />
+    </div>
+
+    <div class=" md-form text-center pb-4">
+      <button  type="submit" class="btn btn-sm btn-success ">Submit</button>
+    </div>
+  </form>
+</div>

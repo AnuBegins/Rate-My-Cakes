@@ -1,0 +1,58 @@
+
+ <head>
+    <title>Cakes</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+
+    <style>
+      *{ outline: 0.0px dotted red; }
+      .itemList {
+        height: 600px;
+        overflow-y: scroll;
+      }
+
+    </style>
+</head>
+
+<body>
+  <!--Jumbotron-->
+  <div class="jumbotron jumbotron-fluid text-center  elegant-color-dark  z-depth-2">
+    <h1 class="h1-reponsive text-info">{{title}}</h1>
+  </div>
+
+  <div class="container-fluid mx-auto">
+      <div class="row">
+        <div class="col-md-2">
+          <app-item-create (createEventEmitter)='getItemsFromService()'></app-item-create>
+        </div>
+
+        <!-- looping through each object within array allItems and passing each object to an instance of the item-show-all component -->
+        <div class="col-md-5 itemList z-depth-1">
+          <div class="row" *ngFor="let item of allItems">
+            <div class="col-md">
+              <app-item-show-all
+                [item]='item' (itemDetailEventEmitter)="dataFromChild(item)"
+                (itemUpdateEventEmitter)="getItemFromService($event)"
+                (deleteEventEmitter)='getItemsFromService()' >
+              </app-item-show-all>
+            </div>
+          </div>
+        </div>
+      <hr>
+
+      <div class="col-md ">
+        <app-item-show-one [itemToShow]='itemToShow'></app-item-show-one>
+      </div>
+    </div>
+  </div>
+
+</body>
